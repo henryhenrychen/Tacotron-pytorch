@@ -41,7 +41,7 @@ def preprocess(args):
     print('[INFO] Preprocessing', end=' => ')
     print(len(futures), 'audio files found')
     results = [future.result() for future in tqdm(futures)]
-    fpath_meta = os.path.join(args.output_dir, 'ljspeech_meta.txt')
+    fpath_meta = os.path.join(args.output_dir, 'all_bzn_meta.txt')
     with open(fpath_meta, 'w') as f:
         for x in results:
             s = map(lambda x: str(x), x)
