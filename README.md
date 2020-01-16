@@ -3,14 +3,7 @@ Implement google's [Tacotron](https://arxiv.org/abs/1703.10135) TTS system with 
 ![tacotron](asset/arch_fig.jpg)
 
 ## Updates
-2018/09/15 => Fix RNN feeding bug.  
-2018/11/04 => Add attention mask and loss mask.  
-2019/05/17 => 2nd version updated.  
-2019/05/28 => fix attention plot bug.  
-
-## TODO
-- [ ] Add vocoder
-- [ ] Multispeaker version
+Fork from TTao 
 
 
 ## Requirements
@@ -20,22 +13,26 @@ See `used_packages.txt`.
 ## Usage
 
 * Data  
-Download [LJSpeech](https://keithito.com/LJ-Speech-Dataset/) provided by keithito. It contains 13100 short audio clips of a single speaker. The total length is approximately 24 hrs.
+Download [BZNSYP 標貝dataset](https://www.data-baker.com/open_source.html), which is a Mandarin opensource uni-female-speaker dataset containing 10000 sentences
 
 * Preprocessing
 ```bash
-# Generate a directory 'training/' containing extracted features and a new meta file 'ljspeech_meta.txt'
-$ python data/preprocess.py --output-dir training \ 
-                            --data-dir <WHERE_YOU_PUT_YOUR_DATASET>/LJSpeech-1.1/wavs \
-                            --old-meta <WHERE_YOU_PUT_YOUR_DATASET>/LJSpeech-1.1/metadata.csv \
+# Prepare metadata.csv which matches format for this project. It will create `bzn_meta.csv` 
+$ python data/prepare_for_bzn.py --data-dir <WHERE_YOU_PATH_TO_DATASET> \
+                                 --output-dir bzn_tmp 
+                                 
+# Generate a directory 'bzn_training/' containing extracted features'
+$ python data/preprocess.py --output-dir bzn_training \ 
+                            --data-dir <WHERE_YOU_PUT_YOUR_DATASET> \
+                            --old-meta bzn_tmp/bzn_meta.csv \
                             --config config/config.yaml
 ```
 
 * Split dataset
 ```bash
-# Generate 'meta_train.txt' and 'meta_test.txt' in 'training/'
-$ python data/train_test_split.py --meta-all training/ljspeech_meta.txt \ 
-                                  --ratio-test 0.1
+# Generate 'meta_train.txt' and 'meta_test.txt' in 'bzn_training/'
+$ python data/train_test_split.py --meta-all bzn_training/all_bzn_meta.txt \ 
+                                  --ratio-test 0.05
 ```
 
 * Train
