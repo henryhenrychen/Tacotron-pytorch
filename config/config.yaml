@@ -2,7 +2,8 @@
 audio:
     num_mels: 80
     num_freq: 1025
-    sample_rate: 22050
+    #sample_rate: 22050
+    sample_rate: 16000
     frame_length_ms: 50
     frame_shift_ms: 12.5
     preemphasis: 0.97
@@ -19,7 +20,7 @@ model:
         betas: [0.9, 0.999]
 
     tacotron:
-        n_vocab: 250 # Use a larger vocab size is ok.
+        n_vocab: 50 # Use a larger vocab size is ok.
         embedding_size: 256
         mel_size: 80
         linear_size: 1025
@@ -27,14 +28,14 @@ model:
 
 solver:
     # Data config. 
-    meta_path: {'train': 'training/meta_train.txt', 'test': 'training/meta_test.txt'}
-    data_dir: 'training'
-    n_jobs: 2
+    meta_path: {'train': 'bzn_training/meta_train.txt', 'test': 'bzn_training/meta_test.txt'}
+    data_dir: 'bzn_training'
+    n_jobs: 4
     # Training config.
-    batch_size: 32
+    batch_size: 16
     grad_clip: 1.0
     total_steps: 400000
-    checkpoint_interval: 2000
+    checkpoint_interval: 1000
     # log
     log_interval: 10
 

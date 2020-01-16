@@ -157,11 +157,11 @@ class Trainer(Solver):
                     self.progress(log)
 
                 if self.step % self.config['solver']['checkpoint_interval'] == 0 and local_step != 0:
+                    # Save checkpoint
+                    self.save_ckpt()
                     with torch.no_grad():
                         val_err = self.validate()
                     if val_err < self.best_val_err:
-                        # Save checkpoint
-                        self.save_ckpt()
                         self.best_val_err = val_err
 
                     self.model.train()
