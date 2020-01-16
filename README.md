@@ -56,6 +56,7 @@ $ tensorboard --logdir log
 ```
 
 * Inference
+  * text input should be pinyin. You can use [pypinyin](https://pypi.org/project/pypinyin/) to translate your characters
 ```bash
 # Generate synthesized speech 
 $ python generate_speech.py --text "wo3 zhen1 de5 hao3 bang4" \
@@ -63,7 +64,6 @@ $ python generate_speech.py --text "wo3 zhen1 de5 hao3 bang4" \
                             --checkpoint-path <CHECKPOINT_PATH> \
                             --config config/config.yaml
 ```
-# text input should be pinyin. You can use [pypinyin](https://pypi.org/project/pypinyin/) to translate your characters 
 
 ## Samples
 All the samples can be found [here](https://github.com/henryhenrychen/Tacotron-pytorch/tree/master/samples). These samples are generated after 140k updates.
