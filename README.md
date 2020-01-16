@@ -66,11 +66,11 @@ $ python generate_speech.py --text "For example, Taiwan is a great place." \
 
 
 ## Samples
-All the samples can be found [here](https://github.com/ttaoREtw/Tacotron-pytorch/tree/master/samples). These samples are generated after 102k updates.
+All the samples can be found [here](https://github.com/henryhenrychen/Tacotron-pytorch/tree/master/samples). These samples are generated after 140k updates.
 
 
 ## Checkpoint
-The pretrained model can be downloaded in this [link](https://drive.google.com/file/d/1q8xLo9zyyclIDgYk3V2mczofnQwqT6pk/view?usp=sharing).
+The pretrained model can be downloaded in this [link](https://github.com/henryhenrychen/Tacotron-pytorch/tree/master/ckpt).
 
 
 ## Alignment
